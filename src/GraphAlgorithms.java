@@ -412,9 +412,9 @@ public class GraphAlgorithms {
             // use a recursive helper method to check for any cycles in the graph.
             if (hasCycle(g, uVal, white, grey, black)) {
                 while (grey.size() > 0) {
-                    grey.iterator().next();
+                    int parent = grey.iterator().next();
                     // TODO: fix the rest of this possible solution.
-                    return null;
+                    break;
                 }
             }
         }

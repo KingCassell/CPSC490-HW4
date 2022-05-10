@@ -167,7 +167,7 @@ public class AdjacencyList<T> implements Graph<T> {
      *         Node 1 and Node 2.
      */
     public boolean hasEdge(int node1, int node2) {
-        return adjList[node1].get(node2) != null;
+        return adjList[node1].containsKey(node2);
     }
 
 
