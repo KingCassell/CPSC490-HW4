@@ -366,22 +366,14 @@ public class GraphAlgorithms {
      * @param g a directed graph
      */
     public static void transitiveClosure(Graph g) {
-        // TODO
         discoveredNodes = new HashMap<>(g.nodeCount());
-        stack = new Stack<>();
-        List<Integer> toVisit = new ArrayList<>(g.nodeCount());
-        int uVal;
         // perform a DFS on every node in the graph
         for (int parentNode = 0; parentNode < g.nodeCount(); ++parentNode) {
             // discovered array must be zeroed out for false after each pass.
             discoveredNodes = dfs(g, parentNode);
-            // TODO: fix this part of the solution. not passing tests, suspect here.
-            System.out.println("\n\n***** " + parentNode + " *****");
             for (int index = 0; index < g.nodeCount(); ++index) {
                 if (discoveredNodes.containsKey(index) && !g.hasEdge(parentNode, index) && parentNode != index) {
                     g.add(parentNode, null, index);
-                    System.out.println(parentNode + " -> " + index);
-                    System.out.println("Edge Count POST: " + g.edgeCount() + "\n");
                 }
              }
         }
