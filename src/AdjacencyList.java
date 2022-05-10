@@ -74,7 +74,7 @@ public class AdjacencyList<T> implements Graph<T> {
                 adjList[node1].put(node2, label);
                 ++edgeCount;
             } else {
-                System.out.println("Invalid Add: " + node1 + " already contains edge");
+                System.out.println("Invalid Add: NODE " + node1 + " already contains edge to NODE " + node2);
             }
         } else {
             if (!adjList[node1].containsKey(node2)) {

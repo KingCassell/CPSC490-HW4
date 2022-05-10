@@ -15,11 +15,6 @@ public class GraphAlgorithms {
     // singleton
     private GraphAlgorithms() {}
 
-
-    // TODO: Copy your previous algorithms here (or copy your HW3
-    // version and add the following)
-
-
     private static Queue<Integer> queue;
     private static Stack<Integer> stack;
     private static Map<Integer, Integer> discoveredNodes;
@@ -35,8 +30,8 @@ public class GraphAlgorithms {
      */
     public static Map<Integer,Integer> bfs(Graph g, int src) {
         List<Integer> toVisit = new ArrayList<>(g.nodeCount());
-        queue = new LinkedList<Integer>();
-        discoveredNodes = new HashMap<Integer, Integer>();
+        queue = new LinkedList<>();
+        discoveredNodes = new HashMap<>();
         int uVal;
         discoveredNodes.put(src, -1);
         queue.add(src);
@@ -77,7 +72,7 @@ public class GraphAlgorithms {
         stack = new Stack<>();
         // add the list of discovered nodes after performing a Breadth first search.
         discoveredNodes = bfs(g, src);
-        int parent = 0;
+        int parent;
         int child = dst;
         // traverse from the destination backwards to the src until the src is either found or no more nodes exist.
         // child is pointed to by parent for discoveredNodes.
@@ -161,7 +156,7 @@ public class GraphAlgorithms {
         // TODO: fix Bipartite
         queue = new LinkedList<>();
         int[] coloring = new int[g.nodeCount()]; // -1 | 0 | 1
-        List<Integer> adjacentNodes = new ArrayList<>(g.nodeCount());
+//        List<Integer> adjacentNodes = new ArrayList<>(g.nodeCount());
         int uVal;
         Arrays.fill(coloring, -1); // fill with no coloring as -1
         coloring[0] = 1;
@@ -372,13 +367,32 @@ public class GraphAlgorithms {
      */
     public static void transitiveClosure(Graph g) {
         // TODO
+        discoveredNodes = new HashMap<>(g.nodeCount());
+        stack = new Stack<>();
+        List<Integer> toVisit = new ArrayList<>(g.nodeCount());
+        int uVal;
+        // perform a DFS on every node in the graph
+        for (int parentNode = 0; parentNode < g.nodeCount(); ++parentNode) {
+            // discovered array must be zeroed out for false after each pass.
+            discoveredNodes = dfs(g, parentNode);
+            // TODO: fix this part of the solution. not passing tests, suspect here.
+            System.out.println("\n\n***** " + parentNode + " *****");
+            for (int index = 0; index < g.nodeCount(); ++index) {
+                if (discoveredNodes.containsKey(index) && !g.hasEdge(parentNode, index) && parentNode != index) {
+                    g.add(parentNode, null, index);
+                    System.out.println(parentNode + " -> " + index);
+                    System.out.println("Edge Count POST: " + g.edgeCount() + "\n");
+                }
+             }
+        }
+
     }
 
     /**
      * Computes the strongly connected components of the given directed
      * graph.
      * @param g a directed graph
-     * @returns a map of node ids to their corresponding component number
+     * @return a map of node ids to their corresponding component number
      */
     public static Map<Integer,Integer> stronglyConnectedComponents(Graph g) {
         // TODO
@@ -399,7 +413,8 @@ public class GraphAlgorithms {
             if (hasCycle(g, uVal, white, grey, black)) {
                 while (grey.size() > 0) {
                     grey.iterator().next();
-                    // TODO: fix the rest of this possible soulution.
+                    // TODO: fix the rest of this possible solution.
+                    return null;
                 }
             }
         }
@@ -415,6 +430,4 @@ public class GraphAlgorithms {
     public static void transitiveReduction(Graph g, Graph reduced) {
         // TODO
     }
-
-
 }
