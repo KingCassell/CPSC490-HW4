@@ -102,6 +102,27 @@ public class HW4Test {
         assertTrue(g_a_d.hasEdge(5, 2));
         assertTrue(g_a_d.hasEdge(9, 6));
         assertTrue(g_a_d.hasEdge(9, 2));
+        // ensure the sinks are still sinks
+        assertFalse(g_a_d.hasEdge(2, 0));
+        assertFalse(g_a_d.hasEdge(2, 6));
+        assertFalse(g_a_d.hasEdge(2, 5));
+        assertFalse(g_a_d.hasEdge(2, 3));
+        assertFalse(g_a_d.hasEdge(2, 4));
+        assertFalse(g_a_d.hasEdge(2, 9));
+        assertFalse(g_a_d.hasEdge(2, 8));
+        assertFalse(g_a_d.hasEdge(3, 2));
+        assertFalse(g_a_d.hasEdge(3, 1));
+        assertFalse(g_a_d.hasEdge(3, 0));
+        assertFalse(g_a_d.hasEdge(4, 5));
+        assertFalse(g_a_d.hasEdge(4, 3));
+        assertFalse(g_a_d.hasEdge(4, 2));
+        assertFalse(g_a_d.hasEdge(4, 1));
+        assertFalse(g_a_d.hasEdge(8, 0));
+        assertFalse(g_a_d.hasEdge(8, 1));
+        assertFalse(g_a_d.hasEdge(8, 2));
+        assertFalse(g_a_d.hasEdge(8, 3));
+        assertFalse(g_a_d.hasEdge(8, 4));
+        assertFalse(g_a_d.hasEdge(8, 6));
     }
 
 
