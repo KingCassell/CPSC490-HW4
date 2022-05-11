@@ -59,6 +59,84 @@ import java.util.List;
 public class HW4Test {
 
 
+    //--------------------------------------------------------------------
+    // My HW4 Tests
+    //--------------------------------------------------------------------
+
+
+    @Test
+    public void complexDirectedTransitiveClosure() throws Exception {
+        // used graph_A_Directed
+        Graph<Integer> g_a_d = new AdjacencyList<>(10, true);
+        g_a_d.add(0, null, 1);
+        g_a_d.add(1, null, 0);
+        g_a_d.add(1, null, 2);
+        g_a_d.add(1, null, 3);
+        g_a_d.add(1, null, 5);
+        g_a_d.add(5, null, 4);
+        g_a_d.add(5, null, 8);
+        g_a_d.add(5, null, 9);
+        g_a_d.add(7, null, 2);
+        g_a_d.add(7, null, 6);
+        g_a_d.add(9, null, 3);
+        g_a_d.add(9, null, 4);
+        g_a_d.add(9, null, 7);
+        // only new nodes tested below
+        GraphAlgorithms.transitiveClosure(g_a_d);
+        assertTrue(g_a_d.hasEdge(0, 2));
+        assertTrue(g_a_d.hasEdge(0, 3));
+        assertTrue(g_a_d.hasEdge(0, 4));
+        assertTrue(g_a_d.hasEdge(0, 6));
+        assertTrue(g_a_d.hasEdge(0, 7));
+        assertTrue(g_a_d.hasEdge(0, 8));
+        assertTrue(g_a_d.hasEdge(0, 9));
+        assertTrue(g_a_d.hasEdge(1, 4));
+        assertTrue(g_a_d.hasEdge(1, 5));
+        assertTrue(g_a_d.hasEdge(1, 6));
+        assertTrue(g_a_d.hasEdge(1, 7));
+        assertTrue(g_a_d.hasEdge(1, 8));
+        assertTrue(g_a_d.hasEdge(1, 9));
+        assertTrue(g_a_d.hasEdge(5, 3));
+        assertTrue(g_a_d.hasEdge(5, 7));
+        assertTrue(g_a_d.hasEdge(5, 6));
+        assertTrue(g_a_d.hasEdge(5, 2));
+        assertTrue(g_a_d.hasEdge(9, 6));
+        assertTrue(g_a_d.hasEdge(9, 2));
+    }
+
+
+    @Test
+    public void complexUndirectedTransitiveClosure() throws Exception {
+        // used graph_A_Directed
+        Graph<Integer> g_a_d = new AdjacencyList<>(10, false);
+        g_a_d.add(0, null, 1);
+        g_a_d.add(1, null, 0);
+        g_a_d.add(1, null, 2);
+        g_a_d.add(1, null, 3);
+        g_a_d.add(1, null, 5);
+        g_a_d.add(5, null, 4);
+        g_a_d.add(5, null, 8);
+        g_a_d.add(5, null, 9);
+        g_a_d.add(7, null, 2);
+        g_a_d.add(7, null, 6);
+        g_a_d.add(9, null, 3);
+        g_a_d.add(9, null, 4);
+        g_a_d.add(9, null, 7);
+        GraphAlgorithms.transitiveClosure(g_a_d);
+        // test that every node is connected
+        for (int i = 0; i < g_a_d.nodeCount(); ++i) {
+            for (int j = 1 + i; j < g_a_d.nodeCount(); ++j) {
+                assertTrue(g_a_d.hasEdge(i, j));
+            }
+        }
+    }
+
+
+    //--------------------------------------------------------------------
+    // Original HW4 Tests
+    //--------------------------------------------------------------------
+
+
     @Test
     public void basicDirectedTransitiveClosure() throws Exception {
         Graph<Integer> g = new AdjacencyList<>(5, true);
