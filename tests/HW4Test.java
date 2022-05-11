@@ -1,8 +1,8 @@
 /*
  * File: HW4Test.java
  * Date: Spring 2022
- * Auth:
- * Desc:
+ * Auth: Dustin Cassell
+ * Desc: Unit Tests for transitive closure and reduction, and Strongly Connected Components
  */
 
 import static org.junit.Assert.assertEquals;
