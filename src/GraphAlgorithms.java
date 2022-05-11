@@ -421,5 +421,7 @@ public class GraphAlgorithms {
      */
     public static void transitiveReduction(Graph g, Graph reduced) {
         // TODO
+        Map<Integer, Integer> strongNodes = stronglyConnectedComponents(g);
+        // TODO: this method depends on the completion of the string components method.
     }
 }
