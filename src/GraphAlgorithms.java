@@ -371,7 +371,7 @@ public class GraphAlgorithms {
         for (int parentNode = 0; parentNode < g.nodeCount(); ++parentNode) {
             // discovered array must be zeroed out for false after each pass.
             discoveredNodes = dfs(g, parentNode);
-            for (int index = 1; index < g.nodeCount(); ++index) {
+            for (int index = 0; index < g.nodeCount(); ++index) {
                 if (discoveredNodes.containsKey(index) && !g.hasEdge(parentNode, index) && parentNode != index) {
                     g.add(parentNode, null, index);
                 }
