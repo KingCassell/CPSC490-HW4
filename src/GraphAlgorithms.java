@@ -243,7 +243,7 @@ public class GraphAlgorithms {
         }
         // check the graph for cycles until either a cycle is found or all the nodes have
         // been moved into the black set.
-        while (white.size() > 0) {
+        while (!white.isEmpty()) {
             uVal = white.iterator().next();
             // use a recursive helper method to check for any cycles in the graph.
             if (hasCycle(g, uVal, white, grey, black)) {
@@ -257,7 +257,7 @@ public class GraphAlgorithms {
     /**
      * performs a DFS recursively to find any possible cycles in both undirected and directed graphs.
      * @param g the Graph to be checked
-     * @param uVal teh current node in the graph to find children of.
+     * @param uVal the current node in the graph to find children of.
      * @param white set of nodes that have not been used at all yet.
      * @param grey set of nodes currently under one parent. all nodes in a cluster.
      * @param black set of nodes that have had all their children visited.
@@ -402,7 +402,7 @@ public class GraphAlgorithms {
             uVal = white.iterator().next();
             // use a recursive helper method to check for any cycles in the graph.
             if (hasCycle(g, uVal, white, grey, black)) {
-                while (grey.size() > 0) {
+                while (!grey.isEmpty()) {
                     int parent = grey.iterator().next();
                     // TODO: fix the rest of this possible solution.
                     break;
@@ -411,6 +411,7 @@ public class GraphAlgorithms {
         }
         return foundStrongs;
     }
+
 
     /**
      * Fills in the reduced graph with the transitive reduction.
